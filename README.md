@@ -1,12 +1,12 @@
-# Capistrano::rbenv
+# Capistrano::nodenv
 
-This gem provides idiomatic rbenv support for Capistrano 3.x (and 3.x
+This gem provides idiomatic nodenv support for Capistrano 3.x (and 3.x
 *only*).
 
 ## Please Note
 
 If you want to use this plugin with Cap 2.x, please use 1.x version of the gem.
-Source code and docs for older integration is available in [another repo](https://github.com/yyuu/capistrano-rbenv)
+Source code and docs for older integration is available in [another repo](https://github.com/yyuu/nodenv)
 
 Thanks a lot to [@yyuu](https://github.com/yyuu) for merging his gem with official one.
 
@@ -15,7 +15,7 @@ Thanks a lot to [@yyuu](https://github.com/yyuu) for merging his gem with offici
 Add this line to your application's Gemfile:
 
     gem 'capistrano', '~> 3.9'
-    gem 'capistrano-rbenv', '~> 2.1'
+    gem 'capistrano-nodenv', '~> 2.1'
 
 And then execute:
 
@@ -24,30 +24,30 @@ And then execute:
 ## Usage
 
     # Capfile
-    require 'capistrano/rbenv'
+    require 'capistrano/nodenv'
 
 
     # config/deploy.rb
-    set :rbenv_type, :user # or :system, depends on your rbenv setup
-    set :rbenv_ruby, '2.4.2'
+    set :nodenv_type, :user # or :system, depends on your nodenv setup
+    set :nodenv_node, '2.4.2'
 
-    # in case you want to set ruby version from the file:
-    # set :rbenv_ruby, File.read('.ruby-version').strip
+    # in case you want to set node version from the file:
+    # set :nodenv_node, File.read('.node-version').strip
 
-    set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-    set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-    set :rbenv_roles, :all # default value
+    set :nodenv_prefix, "nodenv_ROOT=#{fetch(:nodenv_path)} nodenv_VERSION=#{fetch(:nodenv_node)} #{fetch(:nodenv_path)}/bin/nodenv exec"
+    set :nodenv_map_bins, %w{rake gem bundle node rails}
+    set :nodenv_roles, :all # default value
 
-If your rbenv is located in some custom path, you can use `rbenv_custom_path` to set it.
+If your nodenv is located in some custom path, you can use `nodenv_custom_path` to set it.
 
-### Defining the ruby version
+### Defining the node version
 
-To set the Ruby version explicitly, add `:rbenv_ruby` to your Capistrano configuration:
+To set the node version explicitly, add `:nodenv_node` to your Capistrano configuration:
 
     # config/deploy.rb
-    set :rbenv_ruby, '2.4.2'
+    set :nodenv_node, '2.4.2'
 
-Alternatively, allow the remote host's `rbenv` to [determine the appropriate Ruby version](https://github.com/rbenv/rbenv#choosing-the-ruby-version) by omitting `:rbenv_ruby`. This approach is useful if you have a `.ruby-version` file in your project.
+Alternatively, allow the remote host's `nodenv` to [determine the appropriate node version](https://github.com/nodenv/nodenv#choosing-the-node-version) by omitting `:nodenv_node`. This approach is useful if you have a `.node-version` file in your project.
 
 ## Contributing
 
