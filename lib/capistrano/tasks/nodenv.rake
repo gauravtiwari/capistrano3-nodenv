@@ -45,6 +45,6 @@ namespace :load do
 
     set :nodenv_roles, fetch(:nodenv_roles, :all)
     set :nodenv_node_dir, -> { "#{fetch(:nodenv_path)}/versions/#{fetch(:nodenv_node)}" }
-    set :nodenv_map_bins, %w{node nodejs}
+    set :nodenv_map_bins, %w{node npm npx}
   end
 end
